@@ -1,5 +1,6 @@
 package spqrlol.assignment4;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -7,8 +8,10 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 
 
 public class WebView1 extends ActionBarActivity {
@@ -20,6 +23,11 @@ public class WebView1 extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_view1);
 
+        Button button;
+
+        // button, Share
+        button = (Button) findViewById(R.id.share);
+        button.setOnClickListener(share);
 
         Boolean sj = getIntent().getExtras().getBoolean("sj");
         Boolean sc = getIntent().getExtras().getBoolean("sc");
@@ -35,6 +43,7 @@ public class WebView1 extends ActionBarActivity {
             WebView view = (WebView) this.findViewById(R.id.webView);
             view.getSettings().setJavaScriptEnabled(true);
             view.loadUrl(url);
+
         }
 
         if (sc) {
@@ -63,6 +72,64 @@ public class WebView1 extends ActionBarActivity {
 
     }
 
+    View.OnClickListener share = new View.OnClickListener() {
+        public void onClick(View v) {
+
+
+
+
+            Boolean sj = getIntent().getExtras().getBoolean("sj");
+            Boolean sc = getIntent().getExtras().getBoolean("sc");
+            Boolean bbc = getIntent().getExtras().getBoolean("bbc");
+            Boolean vc = getIntent().getExtras().getBoolean("vc");
+
+            if(sj)
+            {
+                String url = "http://www.mercurynews.com";
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_TEXT, url); // your above url
+                startActivity(Intent.createChooser(shareIntent, "Share..."));
+            }
+
+            if(sc)
+            {
+                String url = "http://www.santacruzsentinel.com";
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_TEXT, url); // your above url
+                startActivity(Intent.createChooser(shareIntent, "Share..."));
+            }
+
+            if(bbc)
+            {
+                String url = "http://www.bbc.com";
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_TEXT, url); // your above url
+                startActivity(Intent.createChooser(shareIntent, "Share..."));
+            }
+
+            if(vc)
+            {
+                String url = "http://motherboard.vice.com/en_us";
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_TEXT, url); // your above url
+                startActivity(Intent.createChooser(shareIntent, "Share..."));
+            }
+
+
+        }
+    };
+
+//    public void shareButton(View view) {
+//
+//        Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+//        sharingIntent.setType("text/html");
+//        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, webview.getUrl());
+//        startActivity(sharingIntent);
+//    }
 
     public class myWebClient extends WebViewClient
     {

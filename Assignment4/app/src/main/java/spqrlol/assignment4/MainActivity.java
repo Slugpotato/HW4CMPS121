@@ -18,9 +18,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
 
-    public void clickButton(View v) {
         Button button;
 
         // button1, San Jose
@@ -40,7 +38,30 @@ public class MainActivity extends ActionBarActivity {
         button.setOnClickListener(vice);
 
 
+
     }
+
+//    public void clickButton(View v) {
+//        Button button;
+//
+//        // button1, San Jose
+//        button = (Button) findViewById(R.id.SanJose);
+//        button.setOnClickListener(sj);
+//
+//        // button2, Santa Cruz
+//        button = (Button) findViewById(R.id.SantaCruz);
+//        button.setOnClickListener(sc);
+//
+//        // button3, BBC
+//        button = (Button) findViewById(R.id.BBC);
+//        button.setOnClickListener(bbc);
+//
+//        // button4, Motherboard
+//        button = (Button) findViewById(R.id.Vice);
+//        button.setOnClickListener(vice);
+//
+//
+//    }
 
 
 
